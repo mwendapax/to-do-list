@@ -1,0 +1,130 @@
+:root {
+    --blue : #7DABF5;
+    --lt-blue : #E0EEFD;
+    --bg : #F9FFFF
+}
+
+body {
+    background-color: var(--bg);
+}
+
+header {
+    height: 50px;
+}
+
+nav {
+    display: grid;
+    height: 100%;
+    grid-template-columns: 1fr 4fr;
+    gap: 5px;
+
+
+    >div {
+        border: 2px solid rgba(0, 0, 0, .3);
+        border-radius: 14px;
+    }
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--blue);
+    color: var(--lt-blue);
+    text-transform: capitalize;
+    font-weight: 800;
+    font-size: larger;
+}
+
+.projects {
+    display: grid;
+    grid-template-columns: repeat(6,1fr);
+    padding: 5px;
+    gap: 5px;
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+    overflow: auto;
+
+    div {
+        background-color: var(--lt-blue);
+        border-radius: 4px;
+    }
+}
+
+.new-list {
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    font-size: 2rem;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    color: white;
+    border-radius: 30px;
+    background-color: var(--blue);
+}
+
+.new-list:hover {
+
+    border: 10px solid var(--lt-blue);
+    border-radius: 40px;
+} 
+
+#lists {
+    border: 2px solid rgba(0, 0, 0,.6);
+    border-radius: 12px;
+    height: 750px;
+    padding-block:  20px;
+    padding-inline: 30px;
+    margin-top: 30px;
+    overflow: auto;
+    gap: 10px;
+
+    display: grid;
+    grid-template-rows: repeat(12, 50px);
+
+    >div {
+        background-color: rgba(224, 238, 253, .5);
+        border: 2px solid rgba(0, 0, 0, .2);
+        border-radius: 10px;
+    }
+}
+
+.list {
+    height: 100%;
+    display: flex;
+    gap: 5px;
+
+    >label {
+        display: flex;
+        flex : 1;
+        > div:first-child {
+            flex: 1;
+            display: flex;
+            align-items: center;
+    
+            >input {
+                flex: 1;
+                height: 40%;
+                width: 40%;
+            }
+        }
+    
+        >.list-div {
+            flex: 8;
+            >div {
+                flex: 1;
+                height: 100%;
+                display: flex;
+                justify-content: space-evenly;
+             
+                >p:first-child {
+                    font-weight: 700;
+                }
+            }
+        }
+    }
+
+}

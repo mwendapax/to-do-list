@@ -1,0 +1,40 @@
+// mkElem function simplifies the creation of elements 
+
+function mkElem (elem) {
+    return document.createElement(elem);
+};
+
+
+// mkElemC function simplifies creation for elements with classes 
+
+function mkElemC (elem, className) {
+
+    let newElem = document.createElement(elem);
+    newElem.classList.add(className);
+
+    return newElem;
+};
+
+
+// mkElemD function simplifies creation of elements with Id's 
+
+function mkElemD (elem, idName) {
+    let newElem = document.createElement(elem);
+    newElem.setAttribute('id', idName);
+
+    return newElem;
+}
+
+//appendMultip function appends multiple nodes on an element
+
+function appendMultip (node, ...args) {
+    let nodes = [...arguments];
+
+    for (let i = 1; i < nodes.length; i++) {
+        node.appendChild(nodes[i]);
+    }
+return node;
+}
+
+
+export {mkElem, mkElemC, mkElemD, appendMultip};
