@@ -1,11 +1,13 @@
-// mkElem function simplifies the creation of elements 
+import {category} from './mklist.js';
+
+// mkElem function simplifies the creation of elements;
 
 function mkElem (elem) {
     return document.createElement(elem);
 };
 
 
-// mkElemC function simplifies creation for elements with classes 
+// mkElemC function simplifies creation for elements with classes;
 
 function mkElemC (elem, className) {
 
@@ -16,7 +18,7 @@ function mkElemC (elem, className) {
 };
 
 
-// mkElemD function simplifies creation of elements with Id's 
+// mkElemD function simplifies creation of elements with Id's;
 
 function mkElemD (elem, idName) {
     let newElem = document.createElement(elem);
@@ -25,7 +27,7 @@ function mkElemD (elem, idName) {
     return newElem;
 }
 
-//appendMultip function appends multiple nodes on an element
+//appendMultip function appends multiple nodes on an element;
 
 function appendMultip (node, ...args) {
     let nodes = [...arguments];
@@ -36,5 +38,22 @@ function appendMultip (node, ...args) {
 return node;
 }
 
+//mkProject function dynamically creates option values for select;
 
-export {mkElem, mkElemC, mkElemD, appendMultip};
+function mkProject (name) {
+    let newProject = mkElem('option');
+    newProject.setAttribute('value', name);
+    newProject.textContent = name;
+
+    return newProject;
+}
+
+// mkProjectAppend takes an element and appends properties of an array to it;
+
+function mkProjectAppend(elem, arr) {
+    for (let i = 0; i < arr.length; i++) {
+        elem.appendChild(mkProject(arr[i]));
+    };
+}
+
+export {mkElem, mkElemC, mkElemD, appendMultip, mkProjectAppend};
