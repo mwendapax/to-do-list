@@ -1,5 +1,4 @@
-import {mkElem,mkElemC,mkElemD,appendMultip, mkProjectAppend} from './fn.js';
-import { category } from './mklist.js';
+import {mkElem,mkElemC,mkElemD,appendMultip, mkProjectAppend} from './fn.js'
 
 const task = (function () {
     const newTask = mkElemC('div', 'new-task');
@@ -55,7 +54,9 @@ const task = (function () {
     const select = mkElemD('select','category');
     select.setAttribute('name', 'category');
 
-    mkProjectAppend(select, category.projects);
+    let items = JSON.parse(localStorage.getItem('category'));
+
+    mkProjectAppend(select, items);
 
     appendMultip(categorySection,categorySectionLabel,select);
 

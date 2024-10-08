@@ -1,5 +1,3 @@
-import {category} from './mklist.js';
-
 // mkElem function simplifies the creation of elements;
 
 function mkElem (elem) {
@@ -56,4 +54,19 @@ function mkProjectAppend(elem, arr) {
     };
 }
 
-export {mkElem, mkElemC, mkElemD, appendMultip, mkProjectAppend};
+//mkDivElem function creates a div from an item of array;
+
+function mkDivElem (arrItem) {
+    let newDiv = mkElem('div');
+    newDiv.textContent = arrItem;
+    return newDiv;
+};
+
+// mkDivElemAppend takes a node element and appends item of an array to it;
+function mkDivElemAppend(elem, arr) {
+    for (let i = 0; i < arr.length; i++) {
+        elem.appendChild(mkDivElem(arr[i]));
+    }
+};
+
+export {mkElem, mkElemC, mkElemD, appendMultip, mkProjectAppend, mkDivElemAppend};

@@ -1,4 +1,4 @@
-import { mkElem, mkElemC, mkElemD } from "./fn.js";
+import { mkElem, mkElemC, mkElemD, mkDivElemAppend } from "./fn.js";
 
 const mainUI = (function (){
 
@@ -10,8 +10,15 @@ const mainUI = (function (){
 
     const projects = mkElemC('div', 'projects');
     const projectDiv = mkElem('div');
+    projectDiv.textContent = 'All';
 
     projects.appendChild(projectDiv);
+
+    
+    let items = JSON.parse(localStorage.getItem('category'));
+
+    mkDivElemAppend(projects, items);
+
 
     nav.appendChild(logo);
     nav.appendChild(projects);
@@ -24,7 +31,7 @@ const mainUI = (function (){
     newList.setAttribute('title','Add a new todo');
     newList.textContent = "+";
 
-    return {header, lists, newList};
+    return {header, lists, newList,projects};
 
 })();
 

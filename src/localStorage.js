@@ -1,12 +1,31 @@
 import {category} from './mklist.js';
+import { mainUI } from './mainDOM.js';
 
-const categories = (function () {
-    localStorage.setItem('category',category.projects);
+let project = category.projects;
 
-    let items = localStorage.getItem('category');
 
-    return {items};
+    function addNewProj (...args){
+        for (let item of args) {
+            item.addEventListener('click', () => {
+                let newProp = prompt('Enter new category');
+                project.splice(-1,0,newProp);
+                localStorage.setItem('category', JSON.stringify(project));
+            });
+        }
+    };
 
-})();
 
-export {categories};
+    (function () {
+    localStorage.setItem('category',JSON.stringify(category.projects));
+    })();
+
+    function addCategory () {
+        const projItems = mainUI.projects.querySelectorAll('div');
+        const lastProjDiv = projItems[projItems.length -1];
+        
+        addNewProj(lastProjDiv);    
+        
+    };
+
+
+export {addCategory};
