@@ -50,7 +50,9 @@ function mkProject (name) {
 
 function mkProjectAppend(elem, arr) {
     for (let i = 0; i < arr.length; i++) {
-        elem.appendChild(mkProject(arr[i]));
+        if (i != arr.length -1) {
+            elem.appendChild(mkProject(arr[i]));
+        }
     };
 }
 

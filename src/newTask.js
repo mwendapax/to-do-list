@@ -44,6 +44,8 @@ const task = (function () {
     prioritySectionInput.setAttribute('min','1');
     prioritySectionInput.setAttribute('max','10');
 
+
+
     appendMultip(prioritySection,prioritySectionLabel,prioritySectionInput);
 
     const categorySection = mkElemC('div', 'category-section');
@@ -68,7 +70,7 @@ const task = (function () {
     appendMultip(form,taskInputHead,inputDateCategory,addTask);
     appendMultip(newTask,form);
 
-    return {newTask, addTask};
+    return {newTask, addTask,title, textArea,dateSectionInput,prioritySectionInput,select};
 })();
 
 export {task};

@@ -54,11 +54,18 @@ nav {
         align-items: center;
         border: 1px solid var(--blue);
         color: rgba(0, 0, 0,.7);
+        text-transform: capitalize;
     }
 
     >div:last-child {
-        background-color: greenyellow;
+        background-color: aqua;
         color: black;
+    }
+
+    >div:last-child:hover {
+        background-color: white;
+        color: black;
+        border: 1px solid black;
     }
 }
 
@@ -214,6 +221,10 @@ nav {
 
         .add-task:hover {
             border: 2px solid white;
+        }
+
+        select, option {
+            text-transform: capitalize;
         }
     }
 }

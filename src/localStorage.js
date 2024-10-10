@@ -8,8 +8,12 @@ let project = category.projects;
         for (let item of args) {
             item.addEventListener('click', () => {
                 let newProp = prompt('Enter new category');
-                project.splice(-1,0,newProp);
-                localStorage.setItem('category', JSON.stringify(project));
+
+                if (newProp != undefined) {
+                    project.splice(-1,0,newProp);
+                    localStorage.setItem('category', JSON.stringify(project));
+                    location.reload();
+                }
             });
         }
     };
