@@ -1,21 +1,27 @@
 import { mkElem, mkElemC, mkElemD, mkDivElemAppend } from "./fn.js";
-
+import { addListToDOM } from "./addToDom.js";
 const mainUI = (function (){
 
     const header = mkElem('header');
     const nav = mkElem('nav');
 
     const logo = mkElemC('div', 'logo');
-    logo.textContent = 'To do list';
+    logo.textContent = 'Minimal list';
 
     const projects = mkElemC('div', 'projects');
     const projectDiv = mkElem('div');
     projectDiv.textContent = 'All';
 
+
+    projectDiv.addEventListener('click', () => {
+        addListToDOM();
+    });
+
     projects.appendChild(projectDiv);
 
     
     let items = JSON.parse(localStorage.getItem('category'));
+    console.log('categories', items);
 
     mkDivElemAppend(projects, items);
 
@@ -31,7 +37,7 @@ const mainUI = (function (){
     newList.setAttribute('title','Add a new todo');
     newList.textContent = "+";
 
-    return {header, lists, newList,projects};
+    return {header, lists, newList,projects,projectDiv};
 
 })();
 

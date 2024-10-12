@@ -1,3 +1,4 @@
+import { addListToDOM } from "./addToDom";
 // mkElem function simplifies the creation of elements;
 
 function mkElem (elem) {
@@ -36,6 +37,16 @@ function appendMultip (node, ...args) {
 return node;
 }
 
+
+// listenClick function listens for click event and invokes external function 
+
+function listenClick (elem) {
+    elem.addEventListener('click', (e) => {
+        e.target.style.color = 'red';
+        addListToDOM(elem);
+    })
+}
+
 //mkProject function dynamically creates option values for select;
 
 function mkProject (name) {
@@ -61,6 +72,9 @@ function mkProjectAppend(elem, arr) {
 function mkDivElem (arrItem) {
     let newDiv = mkElem('div');
     newDiv.textContent = arrItem;
+    
+    listenClick(newDiv)
+
     return newDiv;
 };
 

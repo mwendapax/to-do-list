@@ -12,6 +12,7 @@ import { addListToDOM } from './addToDom.js';
 (function addToDOM () {
     const content = document.querySelector('#content');
     addCategory();
+    mainUI.projectDiv.click();
 
     mainUI.newList.addEventListener('click', () => {
         task.title.value = '';
@@ -28,7 +29,7 @@ import { addListToDOM } from './addToDom.js';
 
 
 (function addTask () {
-    addListToDOM();
+    // addListToDOM();
     task.addTask.addEventListener('click',() => {
       
         if(task.title.value.length !== 0 && task.select.value.length !== 0 && task.dateSectionInput.value.length !== 0) {

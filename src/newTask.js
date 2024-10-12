@@ -12,11 +12,11 @@ const task = (function () {
     const title = mkElemD('input','title');
     title.setAttribute('type', 'text');
     title.setAttribute('name','title');
-    title.setAttribute('placeholder', 'Input task title here');
+    title.setAttribute('placeholder', 'Input task title here*');
 
     const textArea = mkElemD('textarea','description');
     textArea.setAttribute('name', 'description');
-    textArea.setAttribute('placeholder', 'Enter task description here');
+    textArea.setAttribute('placeholder', 'Enter task description here*');
 
     appendMultip(taskInputHead, title, textArea);
 
@@ -25,7 +25,7 @@ const task = (function () {
     const dateSection = mkElemC('div', 'date-section');
     const dateSectionLabel = mkElem('label');
     dateSectionLabel.setAttribute('for','due_date');
-    dateSectionLabel.textContent = 'Due date';
+    dateSectionLabel.textContent = 'Due date* ';
 
     const dateSectionInput = mkElemD('input', 'due_date');
     dateSectionInput.setAttribute('type', 'date');
@@ -36,14 +36,13 @@ const task = (function () {
     const prioritySection = mkElemC('div','priority-section');
     const prioritySectionLabel = mkElem('label');
     prioritySectionLabel.setAttribute('for', 'priority');
-    prioritySectionLabel.textContent = 'Priority';
+    prioritySectionLabel.textContent = 'Priority ';
 
     const prioritySectionInput = mkElemD('input', 'range');
     prioritySectionInput.setAttribute('type','range');
     prioritySectionInput.setAttribute('value','3');
     prioritySectionInput.setAttribute('min','1');
     prioritySectionInput.setAttribute('max','10');
-
 
 
     appendMultip(prioritySection,prioritySectionLabel,prioritySectionInput);
@@ -70,7 +69,7 @@ const task = (function () {
     appendMultip(form,taskInputHead,inputDateCategory,addTask);
     appendMultip(newTask,form);
 
-    return {newTask, addTask,title, textArea,dateSectionInput,prioritySectionInput,select};
+    return {newTask, addTask,title, textArea,dateSectionInput,prioritySectionInput,select, items};
 })();
 
 export {task};

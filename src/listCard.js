@@ -28,6 +28,18 @@ const listCard = function (obj) {
     const listItemDate = document.createElement('p');
     listItemDate.textContent = obj.dueDate;
 
+    const listPriority = obj.priority;
+    console.log(listPriority)
+
+    if (listPriority <= 3) {
+        console.log(listPriority);
+        list.style.border = '1px solid #F89F0D';
+    }else if (listPriority >3 && listPriority <= 6) {
+        list.style.border = '1px solid green';
+    }else {
+        list.style.border = '1px solid tomato';
+    }
+
     listItem.appendChild(listItemTitle);
     listItem.appendChild(listItemDate);
     listDiv.appendChild(listItem);
