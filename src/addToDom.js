@@ -1,11 +1,6 @@
 import { mainUI } from "./mainDOM.js";
 import { listCard } from "./listCard.js";
-import { category } from "./mklist.js";
-import { task } from "./newTask.js";
-import {mkElem,mkElemC,mkElemD,appendMultip} from './fn.js'
-
-let items =  task.select;
-
+import {mkElem,mkElemC,appendMultip} from './fn.js'
 
 function listListenClick(obj) {
 const fullList = mkElemC('div','full-list');
@@ -33,7 +28,7 @@ const fullExtras = mkElemC('div','full-extras');
 const fullDate = mkElemC('div','full-date');
 
 const fullDateTitle = mkElem('div');
-fullDateTitle.textContent = 'Date';
+fullDateTitle.textContent = 'Due date';
 
 const fullDateContent = mkElemC('div', 'full-date-content');
 fullDateContent.textContent = obj.dueDate;
@@ -46,7 +41,15 @@ const fullPriorityTitle = mkElem('div');
 fullPriorityTitle.textContent = 'Priority';
 
 const fullPriorityContent = mkElemC('div', 'full-priority-content');
-fullPriorityContent.textContent = obj.priority + '/10';
+
+if(obj.priority <= 3) {
+    fullPriorityContent.textContent = obj.priority +'/10 | low';
+}else if(obj.priority >3 && obj.priority <= 6) {
+    fullPriorityContent.textContent = obj.priority +'/10 | medium';
+}else {
+    fullPriorityContent.textContent = obj.priority +'/10 | urgent';
+}
+
 
 appendMultip(fullPriority,fullPriorityTitle,fullPriorityContent);
 
@@ -80,9 +83,16 @@ function addListToDOM (category) {
             mainUI.lists.innerHTML = '';
             for (let item of newItem){
                 let newCard = listCard(item);
-                mainUI.lists.appendChild(newCard);
+                let listDiv = newCard.querySelector('.list-div');
+                let listCheckBox = newCard.querySelector('#status');
+                listCheckBox.addEventListener('click', () => {
+                    mainUI.lists.removeChild(newCard);
+                    newItem.splice(newItem.indexOf(item),1,);
+                    localStorage.setItem('lists',JSON.stringify(newItem));
+                    location.reload();
+                })
         
-                newCard.addEventListener('click', (e) => {
+                listDiv.addEventListener('click', (e) => {
                     let fullListDetails = listListenClick(item);
                     let mainContent = document.querySelector('#content');
                     mainContent.appendChild(fullListDetails.fullList);
@@ -90,6 +100,9 @@ function addListToDOM (category) {
                         mainContent.removeChild(fullListDetails.fullList);
                     })
                 });
+
+                mainUI.lists.appendChild(newCard);
+
             };
         }    
     }else {
@@ -99,9 +112,16 @@ function addListToDOM (category) {
             for (let item of newItem) {
                 if (item.project.toLowerCase() == category.innerText.toLowerCase()) {
                     let newCard = listCard(item);
-                    mainUI.lists.appendChild(newCard);
+                    let listDiv = newCard.querySelector('.list-div');
+                    let listCheckBox = newCard.querySelector('#status');
+                    listCheckBox.addEventListener('click', () => {
+                        mainUI.lists.removeChild(newCard);
+                        newItem.splice(newItem.indexOf(item),1,);
+                        localStorage.setItem('lists',JSON.stringify(newItem));
+                        location.reload();
+                    })
 
-                    newCard.addEventListener('click', (e) => {
+                    listDiv.addEventListener('click', (e) => {
                         let fullListDetails = listListenClick(item);
                         let mainContent = document.querySelector('#content');
                         mainContent.appendChild(fullListDetails.fullList);
@@ -109,29 +129,14 @@ function addListToDOM (category) {
                             mainContent.removeChild(fullListDetails.fullList);
                         })
                     });
+
+                    mainUI.lists.appendChild(newCard);
+
                 }
             }
         }
     }
-
-    // console.log(category.innerText)
-
   
 };
-
-console.log(items);
-
-// mainUI.projectDiv.addEventListener('click', (e) => {
-//     addListToDOM();   
-// });
-
-
-// for (let item of items) {
-//     if(item != items[items.length -1]) {
-//         console.log(item)
-//         item.style.background = 'red'
-
-//     }
-// }
 
 export {addListToDOM};

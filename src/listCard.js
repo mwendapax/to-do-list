@@ -1,10 +1,10 @@
-import {mkElem,mkElemC, appendMultip,mkElemD} from './fn.js';
+import {mkElemC, appendMultip} from './fn.js';
 
 const listCard = function (obj) {
 
     const list = mkElemC('div','list');
 
-    const listLabel = document.createElement('label');
+    const listLabel = document.createElement('div');
     const listLabelDiv = document.createElement('div');
 
     const status = document.createElement('input');
@@ -29,10 +29,8 @@ const listCard = function (obj) {
     listItemDate.textContent = obj.dueDate;
 
     const listPriority = obj.priority;
-    console.log(listPriority)
 
     if (listPriority <= 3) {
-        console.log(listPriority);
         list.style.border = '1px solid #F89F0D';
     }else if (listPriority >3 && listPriority <= 6) {
         list.style.border = '1px solid green';
@@ -51,10 +49,7 @@ const listCard = function (obj) {
 
     appendMultip(listLabel,listLabelDiv,listDiv);
 
-    list.appendChild(listLabel);
-
-    console.log(obj.title)
-    
+    list.appendChild(listLabel);    
 
     return list;
 

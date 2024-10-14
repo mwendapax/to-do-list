@@ -1,5 +1,3 @@
-import { list } from "./list";
-
 let getStoredLists = JSON.parse(localStorage.getItem('lists'));
 
 let lists;

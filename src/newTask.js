@@ -16,7 +16,7 @@ const task = (function () {
 
     const textArea = mkElemD('textarea','description');
     textArea.setAttribute('name', 'description');
-    textArea.setAttribute('placeholder', 'Enter task description here*');
+    textArea.setAttribute('placeholder', 'Enter task notes here*');
 
     appendMultip(taskInputHead, title, textArea);
 

@@ -4,6 +4,7 @@
     --bg : #E92121;
 }
 
+
 body {
     background: #FEEBDD;
 }
@@ -33,11 +34,26 @@ nav {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color:black;
     color: var(--lt-blue);
+    background: #35CB8B;
     text-transform: capitalize;
     font-weight: 800;
     font-size: larger;
+
+    >div:first-child {
+        flex:1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+            height:auto;
+            width: 40px;
+        }
+    }
+    >div:last-child {
+        flex:3;
+    }
 }
 
 .projects {
@@ -64,7 +80,7 @@ nav {
     >div:hover {
         background-color: rgba(53, 203, 139,.4);
         border: 1px solid black;
-        color: white;
+        color:black;
     }
 
     >div:last-child {
@@ -103,7 +119,7 @@ nav {
 #lists {
     border: 2px solid rgba(0, 0, 0,.6);
     border-radius: 12px;
-    height: 750px;
+    height: 780px;
     padding-block:  20px;
     padding-inline: 30px;
     margin-top: 30px;
@@ -125,7 +141,7 @@ nav {
     display: flex;
     gap: 5px;
 
-    >label {
+    >div {
         color: #3B3246;
         display: flex;
         flex : 1;
@@ -157,7 +173,7 @@ nav {
 
                 >p:last-child {
                     font-weight: 500;
-                    color: #35CB8B;
+                    color:coral;
                 }
             }
         }

@@ -42,7 +42,6 @@ return node;
 
 function listenClick (elem) {
     elem.addEventListener('click', (e) => {
-        e.target.style.color = 'red';
         addListToDOM(elem);
     })
 }
@@ -72,14 +71,14 @@ function mkProjectAppend(elem, arr) {
 function mkDivElem (arrItem) {
     let newDiv = mkElem('div');
     newDiv.textContent = arrItem;
-    
-    listenClick(newDiv)
+    listenClick(newDiv);
 
     return newDiv;
 };
 
 // mkDivElemAppend takes a node element and appends item of an array to it;
 function mkDivElemAppend(elem, arr) {
+
     for (let i = 0; i < arr.length; i++) {
         elem.appendChild(mkDivElem(arr[i]));
     }
