@@ -4,7 +4,6 @@
     --bg : #E92121;
 }
 
-
 body {
     background: #FEEBDD;
 }
@@ -34,11 +33,11 @@ nav {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--lt-blue);
-    background: #35CB8B;
+    color: #35CB8B;
     text-transform: capitalize;
     font-weight: 800;
     font-size: larger;
+    border:none;
 
     >div:first-child {
         flex:1;
@@ -353,4 +352,81 @@ nav {
     padding: 10px;
     color: #3B3246;
     font-weight: 700;
+}
+
+/*  */
+
+.extra-card {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    height: 100px;
+    width: 20px;
+    font-size: 0rem;
+    background: rgba(53, 203, 139,.7);
+    border: 2px solid white;
+    border-radius: 4px;
+    padding: 5px;
+    left: 0;
+    bottom: 50vh;
+    >div {
+        flex: 1;
+        display: flex;
+        gap: 5px;
+
+        >div:first-child {
+            height: 10px;
+            width: 10px;
+            border: 1px solid whitesmoke;
+            border-radius: 5px;
+        }
+    }
+
+    >div:first-child {
+        display: flex;
+        justify-content: center;
+    }
+
+    >div:last-child {
+        height: 20px;
+        border: 1px solid white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        border-radius: 3px;
+        >img {
+            height: auto;
+        }
+    }
+
+    >div:last-child:hover {
+        background-color: #FFEDDF;
+    }
+}
+
+/*  */
+
+.extra-card:hover {
+    width: 50px;
+    font-size: .8rem;
+    background: #35CB8B;
+}
+
+.low-card {
+    >div:first-child {
+        background-color: #F89F0D;
+    }
+}
+
+.mid-card {
+    >div:first-child {
+        background-color: green;
+    }
+}
+
+.high-card {
+    >div:first-child {
+        background-color: tomato;
+    }
 }

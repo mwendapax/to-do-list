@@ -6,11 +6,13 @@ import {task} from './newTask.js';
 import { list } from './list.js';
 import { lists } from './addList.js';
 import { addListToDOM } from './addToDom.js';
+import { extraCard } from './extraCard.js';
 
 
 
 (function addToDOM () {
     const content = document.querySelector('#content');
+    content.appendChild(extraCard);
     addCategory();
 
     mainUI.newList.addEventListener('click', (e) => {
@@ -49,9 +51,9 @@ import { addListToDOM } from './addToDom.js';
         }
     
     })
-    })();
+})();
 
-    (function chooseCategory () {
+(function chooseCategory () {
         const projects = document.querySelector('.projects');
         const projectsItems = projects.querySelectorAll('div');
 
@@ -71,4 +73,4 @@ import { addListToDOM } from './addToDom.js';
         }
 
         mainUI.projectDiv.click();
-    })();
+})();
