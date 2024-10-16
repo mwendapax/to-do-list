@@ -31,7 +31,7 @@ highCardText.textContent = 'High';
 appendMultip(highCard,highCardDiv,highCardText);
 
 const helpCard = mkElem('div');
-helpCard.setAttribute('title','Github');
+helpCard.setAttribute('title','View on Github');
 
 const helpCardImg = mkElem('img');
 helpCardImg.setAttribute('src',supportIcon);
