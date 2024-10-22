@@ -28,6 +28,7 @@ function mkElemD (elem, idName) {
 
 //appendMultip function appends multiple nodes on an element;
 
+// eslint-disable-next-line no-unused-vars
 function appendMultip (node, ...args) {
     let nodes = [...arguments];
 
@@ -41,7 +42,7 @@ return node;
 // listenClick function listens for click event and invokes external function 
 
 function listenClick (elem) {
-    elem.addEventListener('click', (e) => {
+    elem.addEventListener('click', () => {
         addListToDOM(elem);
     })
 }

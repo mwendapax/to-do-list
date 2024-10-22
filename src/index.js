@@ -40,6 +40,7 @@ import { extraCard } from './extraCard.js';
     });
 
     task.addTask.addEventListener('click',() => {
+        const content = document.querySelector('#content');
       
         if(task.title.value.length !== 0 && task.select.value.length !== 0 && task.dateSectionInput.value.length !== 0) {
             let newList  = new list.NewList(task.title.value, task.textArea.value, task.dateSectionInput.value, task.prioritySectionInput.value,task.select.value);

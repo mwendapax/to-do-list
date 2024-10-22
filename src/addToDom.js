@@ -92,7 +92,7 @@ function addListToDOM (category) {
                     location.reload();
                 })
         
-                listDiv.addEventListener('click', (e) => {
+                listDiv.addEventListener('click', () => {
                     let fullListDetails = listListenClick(item);
                     let mainContent = document.querySelector('#content');
                     mainContent.appendChild(fullListDetails.fullList);
@@ -121,7 +121,7 @@ function addListToDOM (category) {
                         location.reload();
                     })
 
-                    listDiv.addEventListener('click', (e) => {
+                    listDiv.addEventListener('click', () => {
                         let fullListDetails = listListenClick(item);
                         let mainContent = document.querySelector('#content');
                         mainContent.appendChild(fullListDetails.fullList);
