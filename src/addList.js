@@ -1,12 +1,11 @@
-let getStoredLists = JSON.parse(localStorage.getItem('lists'));
+let getStoredLists = JSON.parse(localStorage.getItem("lists"));
 
 let lists;
 
-if(getStoredLists === null) {
-    lists = [];
-}else {
-    lists = getStoredLists;
-};
+if (getStoredLists === null) {
+  lists = [];
+} else {
+  lists = getStoredLists;
+}
 
-
-export {lists};
+export { lists };

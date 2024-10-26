@@ -1,75 +1,94 @@
-import {mkElem,mkElemC,mkElemD,appendMultip, mkProjectAppend} from './fn.js'
+import {
+  mkElem,
+  mkElemC,
+  mkElemD,
+  appendMultip,
+  mkProjectAppend,
+} from "./fn.js";
 
 const task = (function () {
-    const newTask = mkElemC('div', 'new-task');
+  const newTask = mkElemC("div", "new-task");
 
-    const form = mkElem('form');
-    form.setAttribute('action', '#');
-    form.setAttribute('method', 'post');
+  const form = mkElem("form");
+  form.setAttribute("action", "#");
+  form.setAttribute("method", "post");
 
-    const taskInputHead = mkElemC('div', 'task-input-head');
+  const taskInputHead = mkElemC("div", "task-input-head");
 
-    const title = mkElemD('input','title');
-    title.setAttribute('type', 'text');
-    title.setAttribute('name','title');
-    title.setAttribute('placeholder', 'Input task title here*');
+  const title = mkElemD("input", "title");
+  title.setAttribute("type", "text");
+  title.setAttribute("name", "title");
+  title.setAttribute("placeholder", "Input task title here*");
 
-    const textArea = mkElemD('textarea','description');
-    textArea.setAttribute('name', 'description');
-    textArea.setAttribute('placeholder', 'Enter task notes here*');
+  const textArea = mkElemD("textarea", "description");
+  textArea.setAttribute("name", "description");
+  textArea.setAttribute("placeholder", "Enter task notes here*");
 
-    appendMultip(taskInputHead, title, textArea);
+  appendMultip(taskInputHead, title, textArea);
 
-    const inputDateCategory = mkElemC('div','input-date-category');
+  const inputDateCategory = mkElemC("div", "input-date-category");
 
-    const dateSection = mkElemC('div', 'date-section');
-    const dateSectionLabel = mkElem('label');
-    dateSectionLabel.setAttribute('for','due_date');
-    dateSectionLabel.textContent = 'Due date* ';
+  const dateSection = mkElemC("div", "date-section");
+  const dateSectionLabel = mkElem("label");
+  dateSectionLabel.setAttribute("for", "due_date");
+  dateSectionLabel.textContent = "Due date* ";
 
-    const dateSectionInput = mkElemD('input', 'due_date');
-    dateSectionInput.setAttribute('type', 'date');
-    dateSectionInput.setAttribute('name','due_date');
+  const dateSectionInput = mkElemD("input", "due_date");
+  dateSectionInput.setAttribute("type", "date");
+  dateSectionInput.setAttribute("name", "due_date");
 
-    appendMultip(dateSection,dateSectionLabel,dateSectionInput);
+  appendMultip(dateSection, dateSectionLabel, dateSectionInput);
 
-    const prioritySection = mkElemC('div','priority-section');
-    const prioritySectionLabel = mkElem('label');
-    prioritySectionLabel.setAttribute('for', 'priority');
-    prioritySectionLabel.textContent = 'Priority ';
+  const prioritySection = mkElemC("div", "priority-section");
+  const prioritySectionLabel = mkElem("label");
+  prioritySectionLabel.setAttribute("for", "priority");
+  prioritySectionLabel.textContent = "Priority ";
 
-    const prioritySectionInput = mkElemD('input', 'range');
-    prioritySectionInput.setAttribute('type','range');
-    prioritySectionInput.setAttribute('value','3');
-    prioritySectionInput.setAttribute('min','1');
-    prioritySectionInput.setAttribute('max','10');
+  const prioritySectionInput = mkElemD("input", "range");
+  prioritySectionInput.setAttribute("type", "range");
+  prioritySectionInput.setAttribute("value", "3");
+  prioritySectionInput.setAttribute("min", "1");
+  prioritySectionInput.setAttribute("max", "10");
 
+  appendMultip(prioritySection, prioritySectionLabel, prioritySectionInput);
 
-    appendMultip(prioritySection,prioritySectionLabel,prioritySectionInput);
+  const categorySection = mkElemC("div", "category-section");
+  const categorySectionLabel = mkElem("label");
+  categorySectionLabel.setAttribute("for", "category");
+  categorySectionLabel.textContent = "Category:";
 
-    const categorySection = mkElemC('div', 'category-section');
-    const categorySectionLabel = mkElem('label');
-    categorySectionLabel.setAttribute('for','category');
-    categorySectionLabel.textContent = 'Category:';
+  const select = mkElemD("select", "category");
+  select.setAttribute("name", "category");
 
-    const select = mkElemD('select','category');
-    select.setAttribute('name', 'category');
+  let items = JSON.parse(localStorage.getItem("category"));
 
-    let items = JSON.parse(localStorage.getItem('category'));
+  mkProjectAppend(select, items);
 
-    mkProjectAppend(select, items);
+  appendMultip(categorySection, categorySectionLabel, select);
 
-    appendMultip(categorySection,categorySectionLabel,select);
+  appendMultip(
+    inputDateCategory,
+    dateSection,
+    prioritySection,
+    categorySection,
+  );
 
-    appendMultip(inputDateCategory,dateSection,prioritySection,categorySection);
+  const addTask = mkElemC("div", "add-task");
+  addTask.textContent = "+";
 
-    const addTask = mkElemC('div','add-task');
-    addTask.textContent = '+';
+  appendMultip(form, taskInputHead, inputDateCategory, addTask);
+  appendMultip(newTask, form);
 
-    appendMultip(form,taskInputHead,inputDateCategory,addTask);
-    appendMultip(newTask,form);
-
-    return {newTask, addTask,title, textArea,dateSectionInput,prioritySectionInput,select, items};
+  return {
+    newTask,
+    addTask,
+    title,
+    textArea,
+    dateSectionInput,
+    prioritySectionInput,
+    select,
+    items,
+  };
 })();
 
-export {task};
+export { task };

@@ -1,17 +1,17 @@
 const category = (function () {
-    let projects = ['Work', 'Personal', '+'];
+  let projects = ["Work", "Personal", "+"];
 
-    let items = JSON.parse(localStorage.getItem('category'));
+  let items = JSON.parse(localStorage.getItem("category"));
 
-    (function () {
-        if(items === null) {
-            localStorage.setItem('category', JSON.stringify(projects));
-        }else {
-            projects = items;
-        }
-    })();
+  (function () {
+    if (items === null) {
+      localStorage.setItem("category", JSON.stringify(projects));
+    } else {
+      projects = items;
+    }
+  })();
 
-    return {projects};
+  return { projects };
 })();
 
-export {category};
+export { category };
